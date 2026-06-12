@@ -1,0 +1,12 @@
+com\adhub\dto\UserDto.class
+com\adhub\dao\UserManagementDAOImpl.class
+com\adhub\config\WebConfig.class
+com\adhub\service\UseManagementServiceImpl.class
+com\adhub\controller\UserManagementController.class
+com\adhub\entity\UserEntity.class
+com\adhub\config\AppConfig.class
+com\adhub\dto\ProductDto.class
+com\adhub\service\UserManagementService.class
+com\adhub\dao\UserManagementDAO.class
+com\adhub\entity\ProductEntity.class
+com\adhub\config\WebInitializer.class

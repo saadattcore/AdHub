@@ -1,0 +1,13 @@
+package com.adhub.dao;
+
+import java.util.List;
+
+import com.adhub.entity.UserEntity;
+
+public interface UserManagementDAO {
+	UserEntity getUser(Long userId);
+	List<UserEntity> getUsers();
+	UserEntity saveUser(UserEntity user);	
+	void updateUser(Long userId, UserEntity user);
+	void deleteUser(Long userId);
+}

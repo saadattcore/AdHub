@@ -1,0 +1,113 @@
+package com.adhub.entity;
+
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+
+@Entity
+@Table(name = "`tblProduct`")
+public class ProductEntity {
+
+	@Id
+	@GeneratedValue
+	@Column(name="`Id`")
+	private Long id;
+	
+	
+	@Column(name="`ProductName`")
+	private String productName;
+	
+	@Column(name="`Make`")
+	private String make;
+	
+	@Column(name="`Model`")
+	private String model;
+	
+	@Column(name="`Year`")
+	private Integer year;
+	
+	@Column(name="`Description`")
+	private String description;
+	
+	@Column(name="`Category`")
+	private String category;
+	
+	@ManyToOne
+	@JoinColumn(name = "`SellerId`")
+	private UserEntity seller;
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
+	public String getMake() {
+		return make;
+	}
+
+	public void setMake(String make) {
+		this.make = make;
+	}
+
+	public String getModel() {
+		return model;
+	}
+
+	public void setModel(String model) {
+		this.model = model;
+	}
+
+	public Integer getYear() {
+		return year;
+	}
+
+	public void setYear(Integer year) {
+		this.year = year;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	public UserEntity getSeller() {
+		return seller;
+	}
+
+	public void setSeller(UserEntity seller) {
+		this.seller = seller;
+	}
+
+	
+	
+	
+	
+	
+}

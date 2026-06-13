@@ -1,0 +1,55 @@
+package com.adhub.controller;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.adhub.entity.User;
+import com.adhub.service.UserService;
+
+
+
+@RestController
+@RequestMapping("/api/usermanagement/")
+public class UserManagementController {
+
+
+	private final UserService userService;
+	public UserManagementController(UserService userService) {
+		this.userService = userService;
+	}
+	
+
+	@Transactional
+	@GetMapping("users")
+	public String get() {	
+		User dbUser = new User();
+		dbUser.setId(1L);
+		dbUser.setName("Saad");
+		
+
+		this.userService.save(dbUser);
+		return "Spring MVC";
+	}
+
+	@GetMapping("users/{id}")
+	public void get(long id) {
+
+	}
+
+	@PostMapping("users")
+	public void save() {
+
+	}
+
+	@PutMapping("users")
+	public void update() {
+
+	}
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.m2e.Maven2LaunchConfigurationType">
+    <booleanAttribute key="M2_BATCH" value="false"/>
+    <stringAttribute key="M2_GOALS" value="-U archetype:generate"/>
+    <listAttribute key="M2_PROPERTIES">
+        <listEntry value="groupId=com.adhub"/>
+        <listEntry value="artifactId=AdHub"/>
+        <listEntry value="archetypeGroupId=com.github.bjlhx15"/>
+        <listEntry value="archetypeArtifactId=maven-archetypes-webapp"/>
+        <listEntry value="archetypeVersion=0.0.2"/>
+        <listEntry value="version=0.0.1-SNAPSHOT"/>
+        <listEntry value="package=com.adhub.AdHub"/>
+        <listEntry value="outputDirectory=C:\Projects\Java\AdHub"/>
+    </listAttribute>
+    <booleanAttribute key="M2_SAVE_BEFORE_LAUNCH" value="false"/>
+    <booleanAttribute key="org.eclipse.debug.ui.private" value="true"/>
+    <stringAttribute key="org.eclipse.jdt.launching.WORKING_DIRECTORY" value="C:\Users\T490\AppData\Local\Temp\m2e-archetypeGenerator5660791242130405173"/>
+</launchConfiguration>

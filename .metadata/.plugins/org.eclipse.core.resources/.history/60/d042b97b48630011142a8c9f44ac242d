@@ -1,0 +1,5 @@
+package com.adhub.controller;
+
+public class AuthenticationController {
+
+}

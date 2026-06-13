@@ -1,0 +1,5 @@
+package com.adhub.exception;
+
+public class GlobalExceptionHandler {
+
+}

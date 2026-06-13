@@ -1,0 +1,103 @@
+package com.adhub.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.adhub.entity.ProductEntity;
+import com.adhub.entity.UserEntity;
+import com.adhub.service.UserManagementService;
+
+@RestController
+@RequestMapping("/api/usermanagement/")
+public class UserManagementController {
+
+	private UserManagementService userService;	
+
+	public UserManagementController(UserManagementService userService) {
+		this.userService = userService;				
+	}
+
+	@GetMapping("users")
+	public String get() {	
+		
+				
+		UserEntity user = new UserEntity();
+		user.setName("Shah Saab");		
+		this.userService.updateUser(752L, user);
+		
+		System.out.println(this.userService.getUser(752L).getName());
+		
+	
+		
+		return "Spring MVC 6";
+	}
+
+	@GetMapping("users/{id}")
+	public ResponseEntity<UserEntity> get(Long id) {
+
+		UserEntity user = this.userService.getUser(id);
+		
+		ResponseEntity
+		.status(HttpStatus.OK)
+		.body(user)
+		
+	}
+
+	@PostMapping("users")
+	
+	
+	
+	public void save() {
+
+	}
+
+	@PutMapping("users")
+	public void update() {
+
+	}
+	
+	private void saveToDb() {
+	
+		UserEntity seller = new UserEntity();
+		seller.setName("Ali");
+		
+		ProductEntity iphone = new ProductEntity();
+		iphone.setProductName("Iphone");
+		iphone.setMake("Apple");
+		iphone.setModel("11 Pro");
+		iphone.setYear(2025);
+		iphone.setCategory("CellPhone");
+		iphone.setSeller(seller);
+		
+		
+		ProductEntity civic = new ProductEntity();
+		civic.setProductName("City");
+		civic.setMake("Honda");
+		civic.setModel("City Aspire");
+		civic.setYear(2013);
+		civic.setCategory("Car");
+		civic.setSeller(seller);
+		
+		List<ProductEntity> products = new ArrayList<ProductEntity>();
+		products.add(iphone);
+		products.add(civic);
+		
+		
+		
+		seller.setProducts(products);
+		
+		userService.saveUser(seller);
+		
+	}
+	
+
+}

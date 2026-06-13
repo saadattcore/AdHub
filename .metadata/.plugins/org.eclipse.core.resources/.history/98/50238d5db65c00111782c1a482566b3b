@@ -1,0 +1,26 @@
+package com.adhub.dao;
+
+import org.springframework.stereotype.Repository;
+
+import com.adhub.entity.UserEntity;
+import com.adhub.service.UserManagementService;
+
+
+@Repository
+public class UserManagementDAOImpl implements UserManagementDAO {
+
+	private  UserManagementService service;
+	
+//	public UserManagementDAOImpl(UserManagementService service) {
+//		this.service = service;
+//	}
+	
+	@Override
+	public void save(UserEntity user) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+
+}

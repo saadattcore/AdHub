@@ -1,0 +1,5 @@
+package com.adhub.filter;
+
+public class JwtFilter {
+
+}

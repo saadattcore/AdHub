@@ -1,0 +1,13 @@
+package com.adhub.service;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class JwtService {
+
+	public String createToken() {
+	
+		
+	}
+	
+}

@@ -1,0 +1,39 @@
+package com.adhub.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Service;
+import com.adhub.dao.UserManagementDAO;
+import com.adhub.entity.UserEntity;
+
+import jakarta.transaction.Transactional;
+
+@Service
+@Scope("prototype")
+public class UseManagementServiceImpl implements UserManagementService {
+
+	private UserManagementDAO dataAccess;
+	
+	public UseManagementServiceImpl(UserManagementDAO dataAccess) {		
+		this.dataAccess = dataAccess;
+		System.out.println("UseManagementServiceImpl arg constructor");
+	}
+
+	// private final SessionFactory sessionFactory;
+
+	// public UseServiceImpl(SessionFactory sessionFactory) {
+	// this.sessionFactory = sessionFactory;
+	// }
+
+	@Transactional
+	@Override
+	public void save(UserEntity user) {
+		// TODO Auto-generated method stub
+
+		// Session session = this.sessionFactory.getCurrentSession();
+		// session.persist(user);
+
+		System.out.println("Service save method");
+
+	}
+}

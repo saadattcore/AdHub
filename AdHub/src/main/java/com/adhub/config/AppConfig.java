@@ -15,41 +15,43 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan(basePackages = { "com.adhub.entity,com.adhub.service,com.adhub.dao,com.adhub.filter"})
+@ComponentScan(basePackages = {
+		"com.adhub.entity,com.adhub.service,com.adhub.dao,com.adhub.filter,com.adhub.ex"
+		+ ""
+		+ "ception" })
 public class AppConfig {
 
-    @Bean
-    public DataSource dataSource() {
-        DriverManagerDataSource ds = new DriverManagerDataSource();
-        ds.setDriverClassName("org.postgresql.Driver");
-        ds.setUrl("jdbc:postgresql://localhost:5432/AdHub");
-        ds.setUsername("postgres");
-        ds.setPassword("admin");
-        return ds;
-    }
+	@Bean
+	public DataSource dataSource() {
+		DriverManagerDataSource ds = new DriverManagerDataSource();
+		ds.setDriverClassName("org.postgresql.Driver");
+		ds.setUrl("jdbc:postgresql://localhost:5432/AdHub");
+		ds.setUsername("postgres");
+		ds.setPassword("admin");
+		return ds;
+	}
 
-    @Bean
-    public LocalSessionFactoryBean sessionFactory() {
-        LocalSessionFactoryBean sf = new LocalSessionFactoryBean();
-        sf.setDataSource(dataSource());
-        sf.setPackagesToScan("com.adhub.entity");
+	@Bean
+	public LocalSessionFactoryBean sessionFactory() {
+		LocalSessionFactoryBean sf = new LocalSessionFactoryBean();
+		sf.setDataSource(dataSource());
+		sf.setPackagesToScan("com.adhub.entity");
 
-        Properties props = new Properties();
-        props.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
-        props.put("hibernate.hbm2ddl.auto", "update");
-        props.put("hibernate.show_sql", "true");
+		Properties props = new Properties();
+		props.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
+		props.put("hibernate.hbm2ddl.auto", "update");
+		props.put("hibernate.show_sql", "true");
 
-        sf.setHibernateProperties(props);
-        return sf;
-    }
+		sf.setHibernateProperties(props);
+		return sf;
+	}
 
-    @Bean
-    public HibernateTransactionManager txManager(SessionFactory sf) {
-        HibernateTransactionManager tx =
-                new HibernateTransactionManager();
+	@Bean
+	public HibernateTransactionManager txManager(SessionFactory sf) {
+		HibernateTransactionManager tx = new HibernateTransactionManager();
 
-        tx.setSessionFactory(sf);
+		tx.setSessionFactory(sf);
 
-        return tx;
-    }
+		return tx;
+	}
 }

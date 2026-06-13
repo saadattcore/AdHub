@@ -1,0 +1,27 @@
+package com.adhub.controller;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import com.adhub.dto.LoginDto;
+
+@RestControllerAdvice
+@RequestMapping("/api/auth")
+public class AuthenticationController {
+
+	@PostMapping("/login")
+	public ResponseEntity<String> login(@RequestBody LoginDto login){
+		
+		if(login.getUserName() != "saad" && login.getPassword() != "saad123") {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid username or password");
+		}
+		
+		return ResponseEntity.status(HttpStatus.OK).body("JWT");
+	}
+	
+}

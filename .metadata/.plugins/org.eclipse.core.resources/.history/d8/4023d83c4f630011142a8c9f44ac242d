@@ -1,0 +1,11 @@
+package com.adhub.config;
+
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+
+@EnableWebMvc
+@ComponentScan(basePackages = "com.adhub.controller")
+public class WebConfig {
+
+}

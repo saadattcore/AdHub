@@ -1,0 +1,5 @@
+package com.adhub.service;
+
+public class JwtService {
+
+}

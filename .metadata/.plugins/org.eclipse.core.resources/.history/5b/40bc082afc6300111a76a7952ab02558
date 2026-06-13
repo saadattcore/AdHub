@@ -1,0 +1,38 @@
+package com.adhub.service;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.stereotype.Component;
+
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.io.Decoders;
+import io.jsonwebtoken.security.Keys;
+
+@Component
+public class JwtService {
+
+	public String createToken() {
+		
+	
+		String secretKey = "122321321321";
+		byte[] keyByte =	Decoders.BASE64.decode(secretKey);
+		Keys.hmacShaKeyFor(keyByte);
+		
+		
+		Jwts
+				.builder()
+				.claim("Id","389666")
+				.claim("role", "admin")
+				.subject("saad_pucit24@yahoo.com")
+				.issuedAt(new Date())
+				.signWith(null)
+				
+				
+				
+		
+		
+	}
+
+}

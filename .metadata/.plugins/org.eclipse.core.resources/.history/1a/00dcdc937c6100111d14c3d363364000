@@ -1,0 +1,14 @@
+package com.adhub.service;
+
+import java.util.List;
+
+
+
+public interface UserManagementService {
+
+//	UserEntity getUser(Long userId);
+//	List<UserEntity> getUsers();
+//	UserEntity saveUser(UserEntity user);	
+//	void updateUser(Long userId, UserEntity user);
+	
+}

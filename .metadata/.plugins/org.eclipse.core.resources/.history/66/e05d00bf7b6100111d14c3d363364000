@@ -1,0 +1,51 @@
+package com.adhub.service;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.adhub.dao.UserManagementDAO;
+import com.adhub.entity.UserEntity;
+
+
+
+
+@Service
+public class UseManagementServiceImpl implements UserManagementService {
+
+//	private UserManagementDAO dataAccess;
+//	
+//	public UseManagementServiceImpl(UserManagementDAO dataAccess) {		
+//		this.dataAccess = dataAccess;
+//		System.out.println("UseManagementServiceImpl arg constructor");
+//	}
+//	
+//	
+//	@Override
+//	public UserEntity getUser(Long userId) {
+//		// TODO Auto-generated method stub
+//		return this.dataAccess.getUser(userId);
+//	}
+//
+//	@Override
+//	public List<UserEntity> getUsers() {
+//		// TODO Auto-generated method stub
+//		return this.dataAccess.getUsers();
+//	}
+//
+//	@Override
+//	public UserEntity saveUser(UserEntity user) {
+//		// TODO Auto-generated method stub
+//		return this.dataAccess.saveUser(user);
+//	}
+//
+//	@Override
+//	public void updateUser(Long userId, UserEntity user) {
+//		// TODO Auto-generated method stub
+//		 this.dataAccess.updateUser(userId,user);
+//	}
+
+
+
+
+}

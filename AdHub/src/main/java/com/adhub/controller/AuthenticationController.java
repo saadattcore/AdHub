@@ -1,5 +1,7 @@
 package com.adhub.controller;
 
+import java.awt.PageAttributes.MediaType;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,8 +9,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestClient;
 
 import com.adhub.dto.LoginDto;
+import com.adhub.dto.TodoDto;
 import com.adhub.service.JwtService;
 
 @RestController
@@ -16,9 +20,12 @@ import com.adhub.service.JwtService;
 public class AuthenticationController {
 
 	private JwtService jwtService;
+	private RestClient restClient;
 
-	public AuthenticationController(JwtService service) {
+	public AuthenticationController(JwtService service, RestClient.Builder builder) {
 		this.jwtService = service;
+
+		this.restClient = builder.baseUrl("https://jsonplaceholder.typicode.com").build();
 	}
 
 	@PostMapping("/login")
@@ -27,15 +34,21 @@ public class AuthenticationController {
 		if (!(login.getUserName().equals("saad") && login.getPassword().equals("saad123"))) {
 			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username or password");
 		}
-		
+
 		String token = this.jwtService.createToken();
 
 		return ResponseEntity.status(HttpStatus.OK).body(token);
 	}
 
 	@GetMapping("/test")
-	public ResponseEntity<String> test() {
-		return ResponseEntity.ok("I am alive");
+	public ResponseEntity<String> test() throws Exception {
+		throw new Exception("It Should Go To Global Exception Handler");
 	}
 
+	@GetMapping("/getapidata")
+	public ResponseEntity<TodoDto> getRestData() {
+		ResponseEntity<TodoDto> response = this.restClient.get().uri("/todos/1")
+				.accept(org.springframework.http.MediaType.APPLICATION_JSON).retrieve().toEntity(TodoDto.class);
+		return response;
+	}
 }

@@ -1,0 +1,2 @@
+spring.datasource.url = jdbc:postgresql://localhost:5432/AdHub
+spring.datasource.driverClassName = org.postgresql.Driver

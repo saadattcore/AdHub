@@ -1,0 +1,12 @@
+# Postgres Jdbc Properties
+
+spring.datasource.url = jdbc:postgresql://localhost:5432/AdHub
+spring.datasource.driverClassName = org.postgresql.Driver
+spring.datasource.userName = "postgres"
+spring.datasource.password = "admin"
+
+# Hibernate Properties
+
+hibernate.dialect = org.hibernate.dialect.PostgreSQLDialect
+hibernate.hbm2ddl.auto = update
+hibernate.show_sql = true

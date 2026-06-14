@@ -1,0 +1,12 @@
+# Postgres Jdbc Properties
+
+jakarta.persistence.jdbc.url = jdbc:postgresql://localhost:5432/AdHub
+jakarta.persistence.jdbc.driver = org.postgresql.Driver
+jakarta.persistence.jdbc.user = postgres
+spring.datasource.password = admin
+
+# Hibernate Properties
+
+hibernate.dialect = org.hibernate.dialect.PostgreSQLDialect
+hibernate.hbm2ddl.auto = update
+hibernate.show_sql = true

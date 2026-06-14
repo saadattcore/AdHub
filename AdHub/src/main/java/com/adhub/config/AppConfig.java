@@ -8,42 +8,52 @@ import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import static org.hibernate.cfg.Environment.*;
 
 @Configuration
+@PropertySource("classpath:application.properties")
 @EnableTransactionManagement
 @ComponentScan(basePackages = {
-		"com.adhub.entity,com.adhub.service,com.adhub.dao,com.adhub.filter,com.adhub.ex"
-		+ ""
-		+ "ception" })
+		"com.adhub.entity,com.adhub.service,com.adhub.dao,com.adhub.filter,com.adhub.exception" })
 public class AppConfig {
+
+	private final Environment env;
+
+	public AppConfig(Environment e) {
+		this.env = e;
+	}
 
 	@Bean
 	public DataSource dataSource() {
 		DriverManagerDataSource ds = new DriverManagerDataSource();
-		ds.setDriverClassName("org.postgresql.Driver");
-		ds.setUrl("jdbc:postgresql://localhost:5432/AdHub");
-		ds.setUsername("postgres");
-		ds.setPassword("admin");
+		ds.setDriverClassName(env.getProperty(DRIVER));
+		ds.setUrl(env.getProperty(URL));
+		ds.setUsername(env.getProperty(USER));
+		ds.setPassword(env.getProperty(PASS));
 		return ds;
 	}
 
 	@Bean
 	public LocalSessionFactoryBean sessionFactory() {
-		LocalSessionFactoryBean sf = new LocalSessionFactoryBean();
-		sf.setDataSource(dataSource());
-		sf.setPackagesToScan("com.adhub.entity");
 
 		Properties props = new Properties();
-		props.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
-		props.put("hibernate.hbm2ddl.auto", "update");
-		props.put("hibernate.show_sql", "true");
 
-		sf.setHibernateProperties(props);
-		return sf;
+		// Hibernate settings
+		props.put(DIALECT, env.getProperty(DIALECT));
+		props.put(HBM2DDL_AUTO, env.getProperty(HBM2DDL_AUTO));
+		props.put(SHOW_SQL, env.getProperty(SHOW_SQL));
+
+		LocalSessionFactoryBean factoryBean = new LocalSessionFactoryBean();
+		factoryBean.setDataSource(dataSource());
+		factoryBean.setPackagesToScan("com.adhub.entity");
+		factoryBean.setHibernateProperties(props);
+		return factoryBean;
 	}
 
 	@Bean

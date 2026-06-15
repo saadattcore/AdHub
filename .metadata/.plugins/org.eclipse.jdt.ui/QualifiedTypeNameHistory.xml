@@ -35,4 +35,10 @@
     <fullyQualifiedTypeName name="com.adhub.dto.ProductDto"/>
     <fullyQualifiedTypeName name="com.adhub.dao.UserManagementDAO"/>
     <fullyQualifiedTypeName name="com.adhub.entity.UserEntity"/>
+    <fullyQualifiedTypeName name="jakarta.validation.constraints.NotBlank"/>
+    <fullyQualifiedTypeName name="org.hibernate.type.format.jakartajson.JakartaJsonIntegration"/>
+    <fullyQualifiedTypeName name="jakarta.validation.constraints.Size"/>
+    <fullyQualifiedTypeName name="jakarta.validation.Valid"/>
+    <fullyQualifiedTypeName name="org.springframework.web.servlet.config.annotation.WebMvcConfigurer"/>
+    <fullyQualifiedTypeName name="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>
 </qualifiedTypeNameHistroy>

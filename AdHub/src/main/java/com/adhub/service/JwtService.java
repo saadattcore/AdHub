@@ -21,7 +21,7 @@ public class JwtService {
 		byte[] keyByte = Decoders.BASE64.decode(secretKey);
 		Key key = Keys.hmacShaKeyFor(keyByte);
 
-		String token = Jwts.builder().claim("Id", "389666").claim("role", "admin").subject("saad_pucit24@yahoo.com")
+		String token = Jwts.builder().claim("Id", "389666").claim("roles", "admin").subject("saad_pucit24@yahoo.com")
 				.issuedAt(new Date()).signWith(key).expiration(new Date(System.currentTimeMillis() + tokenExpiryTime))
 				.compact();
 

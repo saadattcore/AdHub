@@ -3,24 +3,19 @@ package com.adhub.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-
 import com.adhub.dao.UserManagementDAO;
 import com.adhub.entity.UserEntity;
-
-
-
 
 @Service
 public class UseManagementServiceImpl implements UserManagementService {
 
 	private UserManagementDAO dataAccess;
-	
-	public UseManagementServiceImpl(UserManagementDAO dataAccess) {		
+
+	public UseManagementServiceImpl(UserManagementDAO dataAccess) {
 		this.dataAccess = dataAccess;
 		System.out.println("UseManagementServiceImpl arg constructor");
 	}
-	
-	
+
 	@Override
 	public UserEntity getUser(Long userId) {
 		// TODO Auto-generated method stub
@@ -42,17 +37,13 @@ public class UseManagementServiceImpl implements UserManagementService {
 	@Override
 	public void updateUser(Long userId, UserEntity user) {
 		// TODO Auto-generated method stub
-		 this.dataAccess.updateUser(userId,user);
+		this.dataAccess.updateUser(userId, user);
 	}
-
 
 	@Override
 	public void deleteUser(Long userId) {
 		// TODO Auto-generated method stub
 		this.dataAccess.deleteUser(userId);
 	}
-
-
-
 
 }

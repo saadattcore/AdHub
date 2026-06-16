@@ -1,5 +1,0 @@
-package com.adhub.dto;
-
-public class LoginDto {
-
-}

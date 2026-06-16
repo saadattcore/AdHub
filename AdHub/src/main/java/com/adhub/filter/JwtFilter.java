@@ -2,18 +2,13 @@ package com.adhub.filter;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.stream.Collector;
-
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-
 import com.adhub.service.JwtService;
-
 import io.jsonwebtoken.Claims;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -33,18 +28,11 @@ public class JwtFilter extends OncePerRequestFilter {
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
 
-		System.out.println("Jwt Filter Interceptor");
 		String header = request.getHeader("Authorization");
 
 		if (header != null && header.contains("Bearer")) {
-
 			String token = header.substring(7);
-
-			System.out.println(token);
-
 			if (!this.jwtService.validateToken(token)) {
-
-				System.out.println("Invalid token");
 				response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 				response.getWriter().write("Invalid token");
 				return;
@@ -55,7 +43,8 @@ public class JwtFilter extends OncePerRequestFilter {
 			List<SimpleGrantedAuthority> userRolesPermissions = List.of();
 
 			if (userRoles.size() > 0) {
-				userRolesPermissions = userRoles.stream().map(r -> new SimpleGrantedAuthority(r)).toList();
+				userRolesPermissions = userRoles.stream().map(r -> new SimpleGrantedAuthority("ROLE_" + "ADMIN"))
+						.toList();
 			}
 
 			UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(

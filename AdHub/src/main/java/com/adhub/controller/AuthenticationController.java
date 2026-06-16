@@ -33,7 +33,7 @@ public class AuthenticationController {
 	@PostMapping("/login")
 	public ResponseEntity<String> login(@Valid @RequestBody LoginDto login) {
 
-		if (!(login.getUserName().equals("saad") && login.getPassword().equals("saad123"))) {
+		if (!(login.getUserName().equals("saad") && login.getPassword().equals("saad1234"))) {
 			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username or password");
 		}
 

@@ -1,7 +1,10 @@
 package com.adhub.service;
 
 import java.security.Key;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import io.jsonwebtoken.Claims;
@@ -14,6 +17,9 @@ import io.jsonwebtoken.security.Keys;
 public class JwtService {
 
 	public String createToken() {
+		
+		List<String> roles = new ArrayList<String>();
+		roles.add("ADMIN");
 
 		Long tokenExpiryTime = (long) (60000 * 60);
 
@@ -21,7 +27,7 @@ public class JwtService {
 		byte[] keyByte = Decoders.BASE64.decode(secretKey);
 		Key key = Keys.hmacShaKeyFor(keyByte);
 
-		String token = Jwts.builder().claim("Id", "389666").claim("roles", "admin").subject("saad_pucit24@yahoo.com")
+		String token = Jwts.builder().claim("Id", "389666").claim("roles", roles).subject("saad_pucit24@yahoo.com")
 				.issuedAt(new Date()).signWith(key).expiration(new Date(System.currentTimeMillis() + tokenExpiryTime))
 				.compact();
 

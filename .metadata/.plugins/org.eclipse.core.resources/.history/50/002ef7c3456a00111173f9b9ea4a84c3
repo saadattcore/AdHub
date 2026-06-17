@@ -1,0 +1,45 @@
+package com.adhub.config;
+
+import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+
+import com.adhub.filter.LoggerFilter;
+
+import jakarta.servlet.Filter;
+import jakarta.servlet.FilterRegistration.Dynamic;
+import jakarta.servlet.ServletContext;
+
+public class WebInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+
+	@Override
+	protected Class<?>[] getRootConfigClasses() {
+		// TODO Auto-generated method stub
+		return new Class[] { AppConfig.class, SecurityConfig.class };
+	}
+
+	@Override
+	protected Class<?>[] getServletConfigClasses() {
+		// TODO Auto-generated method stub
+		return new Class[] { WebConfig.class };
+	}
+
+	@Override
+	protected String[] getServletMappings() {
+		// TODO Auto-generated method stub
+		return new String[] { "/" };
+	}
+
+//	@Override
+//	protected Filter[] getServletFilters() {
+//		// The proxy will look for a Spring bean named "myCustomFilter" at runtime
+//		return new Filter[] { new LoggerFilter() };
+//	}
+
+	@Override
+	public void onStartup(ServletContext servletContext) {
+
+		Dynamic loggerFilterRegistration = servletContext.addFilter("loggerFilter", new LoggerFilter());
+		loggerFilterRegistration.addMappingForServletNames(null, true, "/*");
+
+	}
+
+}

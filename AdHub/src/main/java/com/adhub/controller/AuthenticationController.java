@@ -44,7 +44,8 @@ public class AuthenticationController {
 
 	@GetMapping("/test")
 	public ResponseEntity<String> test() throws Exception {
-		throw new Exception("It Should Go To Global Exception Handler");
+		//throw new Exception("It Should Go To Global Exception Handler");
+		return ResponseEntity.ok("I am alive");
 	}
 
 	@GetMapping("/getapidata")

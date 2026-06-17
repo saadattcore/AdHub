@@ -59,9 +59,7 @@ public class AppConfig {
 	@Bean
 	public HibernateTransactionManager txManager(SessionFactory sf) {
 		HibernateTransactionManager tx = new HibernateTransactionManager();
-
 		tx.setSessionFactory(sf);
-
 		return tx;
 	}
 }

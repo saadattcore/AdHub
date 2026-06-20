@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<!-- Define the log directory path as a reusable property -->
+	<property name="LOG_DIR" value="/logs" />
+
+	<!-- 1. Configure the Rolling File Appender -->
+	<appender name="ROLLING_FILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- Current active log file -->
+		<file>${LOG_DIR}/application.log</file>
+
+		<!-- Policy for rolling files based on both Time and Size -->
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<!-- Archive file pattern: Includes date (%d) and file index (%i) -->
+			<!-- Adding .gz or .zip at the end enables automatic compression -->
+			<fileNamePattern>${LOG_DIR}/archived/application-%d{yyyy-MM-dd}.%i.log.gz
+			</fileNamePattern>
+
+			<!-- Individual file size limit before triggering a rollover -->
+			<maxFileSize>10MB</maxFileSize>
+
+			<!-- Number of days to retain history before automatic deletion -->
+			<maxHistory>30</maxHistory>
+
+			<!-- Maximum total size of all log archives combined -->
+			<totalSizeCap>2GB</totalSizeCap>
+		</rollingPolicy>
+
+		<!-- Structure and format of the log messages -->
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} -
+				%msg%n</pattern>
+		</encoder>
+	</appender>
+
+
+	<!-- 3. Register Appenders to the Root Logger -->
+	<root level="DEBUG">
+		<appender-ref ref="ROLLING_FILE" />
+		<configuration debug="true">
+			<!-- rest of your configuration -->
+		</configuration>
+	</root>
+
+</configuration>

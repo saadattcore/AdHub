@@ -1,7 +1,7 @@
 package com.adhub.controller;
 
-import java.awt.PageAttributes.MediaType;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +24,8 @@ public class AuthenticationController {
 	private JwtService jwtService;
 	private RestClient restClient;
 
+	private static final Logger logger = LoggerFactory.getLogger(AuthenticationController.class);
+
 	public AuthenticationController(JwtService service, RestClient.Builder builder) {
 		this.jwtService = service;
 
@@ -44,7 +46,14 @@ public class AuthenticationController {
 
 	@GetMapping("/test")
 	public ResponseEntity<String> test() throws Exception {
-		//throw new Exception("It Should Go To Global Exception Handler");
+
+		logger.debug("Text logging");
+		logger.info("Text logging");
+		logger.debug("Text logging");
+		logger.info("Text logging");
+		logger.warn("Text logging");
+
+		// throw new Exception("It Should Go To Global Exception Handler");
 		return ResponseEntity.ok("I am alive");
 	}
 

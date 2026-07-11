@@ -39,9 +39,9 @@
 	<!-- 3. Register Appenders to the Root Logger -->
 	<root level="DEBUG">
 		<appender-ref ref="ROLLING_FILE" />
-		<configuration debug="true">
-			<!-- rest of your configuration -->
-		</configuration>
+		<!-- <configuration debug="true"> 
+		
+		</configuration> -->
 	</root>
 
 </configuration>
